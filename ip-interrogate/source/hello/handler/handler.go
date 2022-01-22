@@ -34,7 +34,7 @@ func (l lambdaHander) Run(ctx context.Context, event events.APIGatewayCustomAuth
 		IsBase64Encoded: false,
 		Headers: map[string]string{
 			"Access-Control-Allow-Origin":      "*",
-			"Access-Control-Allow-Credentials": "true",
+			"Access-Control-Allow-Credentials": "false",
 			"Cache-Control":                    "no-cache; no-store",
 			"Content-Type":                     "application/json",
 			"Content-Security-Policy":          "default-src self",
