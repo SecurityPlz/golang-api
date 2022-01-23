@@ -18,8 +18,7 @@ locals {
   account_id      = data.aws_caller_identity.current.account_id
   environment     = "dev"
   lambda_handler  = "hello"
-  name            = "ip-interrogate"
-  random_name     = "Alice"
+  name            = "golang-api"
   region          = "us-east-2"
 }
 
@@ -102,12 +101,6 @@ resource "aws_lambda_function" "func" {
   runtime           = "go1.x"
   memory_size       = 1024
   timeout           = 30
-
-  environment {
-    variables = {
-      RANDOM_NAME = local.random_name
-    }
-  }
 }
 
 /*
