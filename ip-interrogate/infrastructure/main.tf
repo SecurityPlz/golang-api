@@ -16,7 +16,8 @@ data "aws_caller_identity" "current" {}
 
 locals {
   account_id      = data.aws_caller_identity.current.account_id
-  lambda_handler  = "main"
+  handler         = "main"
+  environment     = "dev"
   name            = "ip-interrogate"
   region          = "us-east-2"
 }
@@ -95,17 +96,11 @@ resource "aws_lambda_function" "func" {
   filename          = data.archive_file.lambda_zip.output_path
   function_name     = local.name
   role              = aws_iam_role.lambda.arn
-  handler           = local.lambda_handler
+  handler           = local.handler
   source_code_hash  = filebase64sha256(data.archive_file.lambda_zip.output_path)
   runtime           = "go1.x"
   memory_size       = 1024
   timeout           = 30
-
-  environment {
-    variables = {
-      RANDOM_NAME = local.random_name
-    }
-  }
 }
 
 /*
@@ -164,7 +159,7 @@ resource "aws_api_gateway_gateway_response" "internal_server_error" {
 resource "aws_api_gateway_resource" "endpoint" {
   rest_api_id = aws_api_gateway_rest_api.api.id
   parent_id   = aws_api_gateway_rest_api.api.root_resource_id
-  path_part   = "/"
+  path_part   = "hello"
 }
 
 resource "aws_api_gateway_method" "endpoint" {
