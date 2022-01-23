@@ -1,4 +1,4 @@
-module github.com/SecurityPlz/golang-api/tree/master/ip-interrogate/source/hello
+module github.com/SecurityPlz/golang-api/tree/functional/ip-interrogate/source/hello
 
 go 1.16
 
