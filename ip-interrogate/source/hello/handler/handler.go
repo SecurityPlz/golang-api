@@ -10,11 +10,11 @@ import (
 	"github.com/likexian/whois"
 )
 
-type first struct {
-	IP string 'json:"IP"'
+type IP struct {
+	string 'json:"IP"'
 }
 
-func HandleRequest(ctx context.Context, IP first) (string, error) {
+func HandleRequest(ctx context.Context, IP) (string, error) {
 	return whois.Whois(IP), nil 
 }
 
