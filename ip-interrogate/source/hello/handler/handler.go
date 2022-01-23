@@ -6,23 +6,18 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/likexian/whois"
 	"github.com/aws/aws-lambda-go/events"
+	"github.com/likexian/whois"
 )
 
-type Response events.APIGatewayProxyResponse
-
-// Handler - interface
-type Handler interface {
-	Run(ctx context.Context, event events.APIGatewayCustomAuthorizerRequest) (Response, error)
+type first struct {
+	IP string 'json:"IP"'
 }
 
-func hello() {
-	var first string 
-	fmt.Scanln(&first)
-	resp, err := whois.Whois(first)
-	iff err != nil {
-		log.Fatalln(err)
-	}
-	fmt.Println(resp)
+func HandleRequest(ctx context.Context, IP first) (string, error) {
+	return whois.Whois(IP), nil 
+}
+
+func handler() {
+	lambda.Start(HandleRequest)
 }
