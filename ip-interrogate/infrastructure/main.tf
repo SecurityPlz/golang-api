@@ -99,7 +99,7 @@ resource "aws_lambda_function" "func" {
   handler           = local.handler
   source_code_hash  = filebase64sha256(data.archive_file.lambda_zip.output_path)
   runtime           = "go1.x"
-  memory_size       = 1024
+  memory_size       = 128
   timeout           = 30
 }
 
@@ -165,7 +165,7 @@ resource "aws_api_gateway_resource" "endpoint" {
 resource "aws_api_gateway_method" "endpoint" {
   rest_api_id   = aws_api_gateway_rest_api.api.id
   resource_id   = aws_api_gateway_resource.endpoint.id
-  http_method   = "GET"
+  http_method   = "POST"
   authorization = "NONE"
 }
 
@@ -183,7 +183,7 @@ resource "aws_api_gateway_integration" "endpoint" {
   resource_id             = aws_api_gateway_method.endpoint.resource_id
   http_method             = aws_api_gateway_method.endpoint.http_method
   integration_http_method = "POST"
-  type                    = "AWS_PROXY"
+  type                    = "MOCK"
   uri                     = aws_lambda_function.func.invoke_arn
  }
 
