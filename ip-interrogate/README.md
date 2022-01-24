@@ -15,12 +15,12 @@ https://tpaschalis.github.io/golang-aws-lambda-getting-started/
 # https://0ifursd48i.execute-api.us-east-2.amazonaws.com/dev/hello <-- current live API
 # the API currently only suppoerts POST and OPTIONS requests, I had other versions, that did other things 'correctly' (printing an arbitrary string on a successful request)
 # This is the closest I got for the intended function.
-# a quick note on why I left the API in this state
+# a quick note on why I left the API in this state I got really close to a working API call, but as the code is today, I couldn't populate my 'first' variable remotely lambda log output below
 Loading response...
 Invocation result for arn:aws:lambda:us-east-2:786755870367:function:ip-interrogate
 Logs:
 START RequestId: 60d746aa-b626-45d7-9ef5-348b3310cb1a Version: $LATEST
-# **2022/01/24 02:36:11 whois: domain is empty** <-- I got really close to a working API call, but as the code is today, I couldn't populate my 'first' variable remotely
+**2022/01/24 02:36:11 whois: domain is empty**
 2022/01/24 02:36:11 unexpected EOF
 2022/01/24 02:36:11 unexpected EOF
 END RequestId: 60d746aa-b626-45d7-9ef5-348b3310cb1a
