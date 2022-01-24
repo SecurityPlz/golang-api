@@ -20,7 +20,7 @@ Loading response...
 Invocation result for arn:aws:lambda:us-east-2:786755870367:function:ip-interrogate
 Logs:
 START RequestId: 60d746aa-b626-45d7-9ef5-348b3310cb1a Version: $LATEST
-**2022/01/24 02:36:11 whois: domain is empty**
+_**2022/01/24 02:36:11 whois: domain is empty**_
 2022/01/24 02:36:11 unexpected EOF
 2022/01/24 02:36:11 unexpected EOF
 END RequestId: 60d746aa-b626-45d7-9ef5-348b3310cb1a
@@ -33,5 +33,5 @@ Payload:
 {"errorMessage":"RequestId: 60d746aa-b626-45d7-9ef5-348b3310cb1a Error: Runtime exited with error: exit status 1","errorType":"Runtime.ExitError"}
 
 
-This was a pretty cool way to spend a weekend. Looking forward to talking with you about it and meeting the team.
--Matt
+# This was a pretty cool way to spend a weekend. Looking forward to talking with you about it and meeting the team.
+# -Matt
